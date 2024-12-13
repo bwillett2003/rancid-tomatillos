@@ -1,10 +1,11 @@
 import './MoviePoster.css';
+import VoteContainer from '../VoteContainer/VoteContainer';
 
 function MoviePoster({ title, poster, votes }) {
   return (
     <section className='MoviePoster'>
       <img src={poster} alt={`${title} poster`} />
-      <p className="vote_count">{votes}</p>
+      <VoteContainer votes={votes} />
     </section>
   );
 }
