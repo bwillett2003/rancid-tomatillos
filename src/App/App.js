@@ -24,7 +24,7 @@ function App() {
       <header>
         <h1>rancid tomatillos</h1>
       </header>
-      <MoviesContainer movies={moviePosters} onUpVote={upVote}/>
+      <MoviesContainer movies={movies} onUpVote={upVote}/>
     </main>
   );
 }
