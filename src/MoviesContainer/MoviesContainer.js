@@ -1,7 +1,7 @@
 import './MoviesContainer.css';
 import MoviePoster from '../MoviePoster/MoviePoster';
 
-function Movies({ movies, onUpVote }) {
+function Movies({ movies, onUpVote, onDownVote }) {
   return (
       <section className='MoviesContainer'>
         {movies.map(movie => (
@@ -10,7 +10,8 @@ function Movies({ movies, onUpVote }) {
           title={movie.title} 
           poster={movie.poster_path} 
           votes={movie.vote_count} 
-          onUpVote={() => onUpVote(movie.id)}/>
+          onUpVote={() => onUpVote(movie.id)}
+          onDownVote={() => onDownVote(movie.id)}/>
       ))}
       </section>
   );
