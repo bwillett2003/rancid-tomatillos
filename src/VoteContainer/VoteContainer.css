@@ -1,13 +1,11 @@
 .VoteContainer {
-  background-color: white; 
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  height: 40px; 
-  width: 100%; 
-  box-sizing: border-box; 
-  border-top: 1px solid black; 
-  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background-color: white;
+  box-sizing: border-box;
 }
 
 .VoteContainer p {
