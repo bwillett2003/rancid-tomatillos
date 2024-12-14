@@ -2,10 +2,10 @@ import './VoteContainer.css';
 import upvoteIcon from '../icons/upvote.png';
 import downvoteIcon from '../icons/downvote.png';
 
-function VoteContainer({ votes }) {
+function VoteContainer({ votes, onUpVote }) {
   return (
     <div className="VoteContainer">
-      <button className="vote-button">
+      <button className="vote-button" onCllick={onUpVote}>
         <img src={upvoteIcon} alt="Upvote" />
       </button>
       <p>{votes}</p>
