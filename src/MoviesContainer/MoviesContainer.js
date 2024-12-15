@@ -12,7 +12,7 @@ function Movies({ movies, onUpVote, onDownVote, onSelectMovie }) {
           votes={movie.vote_count} 
           onUpVote={() => onUpVote(movie.id)}
           onDownVote={() => onDownVote(movie.id)}
-          onSelectMovie={() => onSelectMovie(movie)}
+          onSelectMovie={() => onSelectMovie(movie.id)}
           />
       ))}
       </section>

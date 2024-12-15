@@ -1,7 +1,5 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-// import moviePosters from '../data/movie_posters';
-import movieDetails from '../data/movie_details';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import homeIcon from '../icons/home.png';
@@ -23,8 +21,18 @@ function App() {
       .catch(error => console.log(error))
   }
   
-  function selectMovie() {
-    setChosenMovie(movieDetails);
+  function selectMovie(movieId) {
+    fetch(`https://rancid-tomatillos-api.onrender.com/api/v1/movies/${movieId}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error (`No movie found with an ID of ${movieId}`)
+        }
+        return response.json()
+      })
+      .then((data) => {
+        setChosenMovie(data)
+      })
+      .catch((error) => console.log(error.message))
   }
 
   function goBack() {
