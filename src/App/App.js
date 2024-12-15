@@ -1,7 +1,5 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-// import moviePosters from '../data/movie_posters';
-import movieDetails from '../data/movie_details';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import homeIcon from '../icons/home.png';
