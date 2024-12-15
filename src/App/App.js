@@ -1,15 +1,28 @@
 import './App.css';
 import { useState } from 'react';
-import moviePosters from '../data/movie_posters';
+// import moviePosters from '../data/movie_posters';
 import movieDetails from '../data/movie_details';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import homeIcon from '../icons/home.png';
 
 function App() {
-  const [movies, setMovies] = useState(moviePosters);
+  const [movies, setMovies] = useState([]);
   const [chosenMovie, setChosenMovie] = useState(null);
 
+  useEffect( () => {
+    getMovies()
+  }, [])
+
+  function getMovies() {
+    fetch('https://rancid-tomatillos-api.onrender.com/api/v1/movies')
+      .then(response => response.json())
+      .then(data => {
+        setMovies([...movies, ...data])
+      })
+      .catch(error => console.log(error))
+  }
+  
   function selectMovie() {
     setChosenMovie(movieDetails);
   }
