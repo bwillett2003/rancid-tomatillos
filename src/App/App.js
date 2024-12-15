@@ -23,8 +23,18 @@ function App() {
       .catch(error => console.log(error))
   }
   
-  function selectMovie() {
-    setChosenMovie(movieDetails);
+  function selectMovie(movieId) {
+    fetch(`https://rancid-tomatillos-api.onrender.com/api/v1/movies/${movieId}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error (`No movie found with an ID of ${movieId}`)
+        }
+        return response.json()
+      })
+      .then((data) => {
+        setChosenMovie(data)
+      })
+      .catch((error) => console.log(error.message))
   }
 
   function goBack() {
