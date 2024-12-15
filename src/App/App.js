@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // import moviePosters from '../data/movie_posters';
 import movieDetails from '../data/movie_details';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
@@ -18,7 +18,7 @@ function App() {
     fetch('https://rancid-tomatillos-api.onrender.com/api/v1/movies')
       .then(response => response.json())
       .then(data => {
-        setMovies([...movies, ...data])
+        setMovies(data)
       })
       .catch(error => console.log(error))
   }
