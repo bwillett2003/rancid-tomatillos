@@ -40,23 +40,47 @@ function App() {
   }
 
   function upVote(movieId) {
-    const updatedMovies = movies.map((movie) => {
-      if (movie.id === movieId) {
-        return { ...movie, vote_count: movie.vote_count + 1 };
-      }
-      return movie;
-    });
-    setMovies(updatedMovies);
+    fetch(`https://rancid-tomatillos-api.onrender.com/api/v1/movies/${movieId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ vote_direction: 'up' }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to upvote. No movie found with an ID of ${movieId}.`);
+        }
+        return response.json();
+      })
+      .then((updatedMovie) => {
+        setMovies((prevMovies) =>
+          prevMovies.map((movie) =>
+            movie.id === updatedMovie.id ? { ...movie, vote_count: updatedMovie.vote_count } : movie
+          )
+        );
+      })
+      .catch((error) => console.error(error.message));
   }
 
   function downVote(movieId) {
-    const updatedMovies = movies.map((movie) => {
-      if (movie.id === movieId) {
-        return { ...movie, vote_count: movie.vote_count - 1 };
-      }
-      return movie;
-    });
-    setMovies(updatedMovies);
+    fetch(`https://rancid-tomatillos-api.onrender.com/api/v1/movies/${movieId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ vote_direction: 'down' }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to downvote. No movie found with an ID of ${movieId}.`);
+        }
+        return response.json();
+      })
+      .then((updatedMovie) => {
+        setMovies((prevMovies) =>
+          prevMovies.map((movie) =>
+            movie.id === updatedMovie.id ? { ...movie, vote_count: updatedMovie.vote_count } : movie
+          )
+        );
+      })
+      .catch((error) => console.error(error.message));
   }
 
   return (
