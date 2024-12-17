@@ -1,4 +1,4 @@
-describe('template spec', () => {
+describe('Movie Details spec', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000')
   })
