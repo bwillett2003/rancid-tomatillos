@@ -56,21 +56,49 @@ describe('movie container spec', () => {
   })
 
   it('adds one vote to the count when the upvote img is clicked', () => {
-    cy.intercept('PATCH', "https://rancid-tomatillos-api.onrender.com/api/v1/movies/155", {
-      statusCode: 201,
+    cy.intercept('PATCH', 'https://rancid-tomatillos-api.onrender.com/api/v1/movies/155', {
+      statusCode: 200,
       body: {
         id: 155,
         poster_path: "https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
         title: "The Dark Knight",
-        vote_count: 32544
-      }
+        vote_count: 32545,
+      },
+    }).as('upvoteMovie')
+  
+    cy.get('.VoteContainer').first().within(() => {
+      cy.get('p').should('contain', '32544')
     })
-    
-    cy.get('.VoteContainer').first('p').find('p').should('contain', '32544')
+  
     cy.get('.vote-button').first().click()
-    // cy.get('.VoteContainer').first().find('img[alt="Upvote"]').should('exist').click()
-    // cy.get('.VoteContainer').first('p').find('p').should('contain', '32545')
-    // cy.get('.vote-button').first().click()
+    cy.wait('@upvoteMovie')
+  
+    cy.get('.VoteContainer').first().within(() => {
+      cy.get('p').should('contain', '32545')
+    })
+  })
+
+  it('subtracts one vote to the count when the upvote img is clicked', () => {
+    cy.intercept('PATCH', 'https://rancid-tomatillos-api.onrender.com/api/v1/movies/155', {
+      statusCode: 200,
+      body: {
+        id: 155,
+        poster_path: "https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+        title: "The Dark Knight",
+        vote_count: 32543,
+      },
+    }).as('downvoteMovie')
+  
+    cy.get('.VoteContainer').first().within(() => {
+      cy.get('p').should('contain', '32544')
+    })
+  
+    cy.get('.vote-button').eq(1).click()
+    cy.wait('@downvoteMovie')
+  
+    cy.get('.VoteContainer').first().within(() => {
+      cy.get('p').should('contain', '32543')
+    })
   })
 
 })
