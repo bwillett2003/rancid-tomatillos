@@ -98,6 +98,7 @@ function App() {
         <MovieDetails details={chosenMovie} goBack={goBack} />
       ) : ( */}
         <Routes>
+          console.log("movies", movies)
           <Route path='/' element={<MoviesContainer
                                       movies={movies}
                                       onUpVote={upVote}
