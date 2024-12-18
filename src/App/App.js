@@ -94,9 +94,9 @@ function App() {
           </button>
         )}
       </header>
-      {chosenMovie ? (
+      {/* {chosenMovie ? (
         <MovieDetails details={chosenMovie} goBack={goBack} />
-      ) : (
+      ) : ( */}
         <Routes>
           <Route path='/' element={<MoviesContainer
                                       movies={movies}
@@ -104,8 +104,9 @@ function App() {
                                       onDownVote={downVote}
                                       onSelectMovie={selectMovie}/> }
           />
+          <Route path='/movies/:id' element={ <MovieDetails /> } />
         </Routes>
-      )}
+      {/* )} */}
     </main>
   );
 }
