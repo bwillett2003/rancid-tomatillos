@@ -98,14 +98,14 @@ function App() {
         <MovieDetails details={chosenMovie} goBack={goBack} />
       ) : ( */}
         <Routes>
-          console.log("movies", movies)
           <Route path='/' element={<MoviesContainer
                                       movies={movies}
                                       onUpVote={upVote}
                                       onDownVote={downVote}
                                       onSelectMovie={selectMovie}/> }
           />
-          <Route path='/movies/:id' element={ <MovieDetails /> } />
+          <Route path='/movies/:id' element={<MovieDetails movies={movies} />} 
+/>
         </Routes>
       {/* )} */}
     </main>

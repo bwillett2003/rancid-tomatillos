@@ -1,10 +1,13 @@
 import './MoviePoster.css';
 import VoteContainer from '../VoteContainer/VoteContainer';
+import { Link } from 'react-router-dom'
 
-function MoviePoster({ title, poster, votes, onUpVote, onDownVote, onSelectMovie }) {
+function MoviePoster({ id, title, poster, votes, onUpVote, onDownVote }) {
   return (
     <section className='MoviePoster'>
-      <img src={poster} alt={`${title} poster`} onClick={onSelectMovie} />
+      <Link to={ `movies/${id}` }>
+        <img src={poster} alt={`${title} poster`}  />
+      </Link>
       <VoteContainer votes={votes} onUpVote={onUpVote} onDownVote={onDownVote}/>
     </section>
   );

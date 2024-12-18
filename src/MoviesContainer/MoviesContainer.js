@@ -7,12 +7,13 @@ function Movies({ movies, onUpVote, onDownVote, onSelectMovie }) {
         {movies.map(movie => (
         <MoviePoster 
           key={movie.id} 
+          id={movie.id}
           title={movie.title} 
           poster={movie.poster_path} 
           votes={movie.vote_count} 
           onUpVote={() => onUpVote(movie.id)}
           onDownVote={() => onDownVote(movie.id)}
-          onSelectMovie={() => onSelectMovie(movie.id)}
+          // onSelectMovie={() => onSelectMovie(movie.id)}
           />
       ))}
       </section>
