@@ -1,4 +1,5 @@
 import './MovieDetails.css';
+import { useParams } from 'react-router-dom'
 
 function MovieDetails({ details }) {
   return (
