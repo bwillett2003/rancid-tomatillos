@@ -1,5 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import homeIcon from '../icons/home.png';
@@ -96,12 +97,14 @@ function App() {
       {chosenMovie ? (
         <MovieDetails details={chosenMovie} goBack={goBack} />
       ) : (
-        <MoviesContainer
-          movies={movies}
-          onUpVote={upVote}
-          onDownVote={downVote}
-          onSelectMovie={selectMovie}
-        />
+        <Routes>
+          <Route path='/' element={<MoviesContainer
+                                      movies={movies}
+                                      onUpVote={upVote}
+                                      onDownVote={downVote}
+                                      onSelectMovie={selectMovie}/> }
+          />
+        </Routes>
       )}
     </main>
   );
