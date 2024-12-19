@@ -3,11 +3,9 @@ import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
-import homeIcon from '../icons/home.png';
 
 function App() {
   const [movies, setMovies] = useState([]);
-  const [chosenMovie, setChosenMovie] = useState(null);
 
   useEffect( () => {
     getMovies()
@@ -22,24 +20,6 @@ function App() {
       .catch(error => console.log(error))
   }
   
-  function selectMovie(movieId) {
-    fetch(`https://rancid-tomatillos-api.onrender.com/api/v1/movies/${movieId}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error (`No movie found with an ID of ${movieId}`)
-        }
-        return response.json()
-      })
-      .then((data) => {
-        setChosenMovie(data)
-      })
-      .catch((error) => console.log(error.message))
-  }
-
-  function goBack() {
-    setChosenMovie(null);
-  }
-
   function upVote(movieId) {
     fetch(`https://rancid-tomatillos-api.onrender.com/api/v1/movies/${movieId}`, {
       method: 'PATCH',
@@ -88,26 +68,18 @@ function App() {
     <main className="App">
       <header>
         <h1>rancid tomatillos</h1>
-        {chosenMovie && (
-          <button className="home-button" onClick={goBack}>
-            <img src={homeIcon} alt="Home" />
-          </button>
-        )}
       </header>
-      {/* {chosenMovie ? (
-        <MovieDetails details={chosenMovie} goBack={goBack} />
-      ) : ( */}
         <Routes>
-          console.log("movies", movies)
-          <Route path='/' element={<MoviesContainer
+          <Route path='/' element={ <MoviesContainer
                                       movies={movies}
                                       onUpVote={upVote}
                                       onDownVote={downVote}
-                                      onSelectMovie={selectMovie}/> }
-          />
-          <Route path='/movies/:id' element={ <MovieDetails /> } />
+                                    />
+          }
+        />
+          <Route path='/movies/:id' element={<MovieDetails movies={movies} />} 
+/>
         </Routes>
-      {/* )} */}
     </main>
   );
 }
