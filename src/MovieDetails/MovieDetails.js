@@ -1,34 +1,3 @@
-// import './MovieDetails.css';
-// import { useParams } from 'react-router-dom'
-
-// function MovieDetails({ movies }) {
-//   const { id } = useParams()  
-//   const movie = movies.find((movie) => movie.id === parseInt(id))
-  
-//   if (!movies.length) {
-//     return <p>Loading movie details...</p>;
-//   }
-
-//   if (!movie) {
-//     // If no movie with matching ID is found
-//     return <p>No movie found. Please go back and try again.</p>;
-//   }
-
-//   return (
-//     <section className='MovieDetails'>
-//       <img src={movie.backdrop_path} alt={`${movie.title}`}  />
-//       <h2>{ movie.title }</h2>
-//       <ul>
-//         { movie.genre_ids.map( (genre, index) => (
-//           <li key={index}>{genre}</li>
-//         ))}
-//       </ul>
-//       <p>{ movie.overview }</p>
-//     </section>
-//   );
-// }
-
-// export default MovieDetails;
 
 import './MovieDetails.css';
 import { useParams, useNavigate } from 'react-router-dom';
