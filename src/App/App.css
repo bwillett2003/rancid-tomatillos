@@ -29,14 +29,6 @@ p {
   color: white;
 }
 
-/* .home-link {
-  color: white
-}
-
-.not-found {
-  display: inline-grid;
-} */
-
 .error {
   display: flex;
   flex-direction: column;
