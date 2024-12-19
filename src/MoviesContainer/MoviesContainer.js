@@ -16,7 +16,7 @@ function Movies({ movies, onUpVote, onDownVote }) {
           />
       ))}
       </section>
-  );
+  )
 }
   
 export default Movies;
