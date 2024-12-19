@@ -6,11 +6,11 @@ function VoteContainer({ votes, onUpVote, onDownVote }) {
   return (
     <div className="VoteContainer">
       <button className="vote-button" onClick={onUpVote}>
-        <img src={upvoteIcon} alt="Upvote" />
+        <img src={upvoteIcon} alt="Upvote button" />
       </button>
       <p>{votes}</p>
       <button className="vote-button" onClick={onDownVote}>
-        <img src={downvoteIcon} alt="Downvote" />
+        <img src={downvoteIcon} alt="Downvote button" />
       </button>
     </div>
   );

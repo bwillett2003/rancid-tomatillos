@@ -6,7 +6,7 @@ function MoviePoster({ id, title, poster, votes, onUpVote, onDownVote }) {
   return (
     <section className='MoviePoster'>
       <Link to={ `movies/${id}` }>
-        <img src={poster} alt={`${title} poster`}  />
+        <img src={poster} alt={`${title} poster image`}  />
       </Link>
       <VoteContainer votes={votes} onUpVote={onUpVote} onDownVote={onDownVote}/>
     </section>
