@@ -1,4 +1,3 @@
-
 import './MovieDetails.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -23,9 +22,9 @@ function MovieDetails() {
   return (
     <section className="MovieDetails">
       <button className="home-button" onClick={() => navigate('/')}>
-        <img src={homeIcon} alt="Home" />
+        <img src={homeIcon} alt="Home Icon button" />
       </button>
-      <img src={details.backdrop_path} alt={`${details.title} backdrop`} />
+      <img src={details.backdrop_path} alt={`${details.title}, Movie details backdrop image`} />
       <h2>{details.title}</h2>
         <ul>
           { details.genre_ids.map( (genre, index) => (

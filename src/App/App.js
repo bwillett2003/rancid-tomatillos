@@ -77,8 +77,17 @@ function App() {
                                     />
           }
         />
-          <Route path='/movies/:id' element={<MovieDetails movies={movies} />} 
-/>
+          <Route path='/movies/:id' element={<MovieDetails movies={movies} />} />
+          <Route
+          path="*"
+          element={
+            <div className="not-found">
+              <h2>404 - Page Not Found</h2>
+              <p>Sorry, the page you're looking for does not exist.</p>
+              <a href="/" className="home-link">Go back to the homepage</a>
+            </div>
+          }
+        />
         </Routes>
     </main>
   );

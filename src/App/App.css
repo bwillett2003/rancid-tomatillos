@@ -28,3 +28,11 @@ p {
   margin-top: 50px;
   color: white;
 }
+
+.home-link {
+  color: white
+}
+
+.not-found {
+  display: inline-grid;
+}

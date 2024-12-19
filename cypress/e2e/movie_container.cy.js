@@ -36,12 +36,12 @@ describe('movie container spec', () => {
     cy.get('.VoteContainer').should('exist')
     
     cy.get('.VoteContainer').first('p').should('contain', '32544')
-    cy.get('.VoteContainer').first().find('img[alt="Upvote"]').should('exist')
-    cy.get('.VoteContainer').first().find('img[alt="Downvote"]').should('exist')
+    cy.get('.VoteContainer').first().find('img[alt="Upvote button"]').should('exist')
+    cy.get('.VoteContainer').first().find('img[alt="Downvote button"]').should('exist')
 
     cy.get('.VoteContainer').last('p').should('contain', '27642')
-    cy.get('.VoteContainer').last().find('img[alt="Upvote"]').should('exist')
-    cy.get('.VoteContainer').last().find('img[alt="Downvote"]').should('exist')
+    cy.get('.VoteContainer').last().find('img[alt="Upvote button"]').should('exist')
+    cy.get('.VoteContainer').last().find('img[alt="Downvote button"]').should('exist')
   })
 
   it('sends you to the movie details page when a movie is selected', () => {
