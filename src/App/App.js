@@ -5,7 +5,7 @@ import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
 
 function App() {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([])
 
   useEffect( () => {
     getMovies()
@@ -28,18 +28,18 @@ function App() {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error(`Failed to upvote. No movie found with an ID of ${movieId}.`);
+          throw new Error(`Failed to upvote. No movie found with an ID of ${movieId}.`)
         }
-        return response.json();
+        return response.json()
       })
       .then((updatedMovie) => {
         setMovies((prevMovies) =>
           prevMovies.map((movie) =>
             movie.id === updatedMovie.id ? { ...movie, vote_count: updatedMovie.vote_count } : movie
           )
-        );
+        )
       })
-      .catch((error) => console.error(error.message));
+      .catch((error) => console.error(error.message))
   }
 
   function downVote(movieId) {
@@ -50,18 +50,18 @@ function App() {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error(`Failed to downvote. No movie found with an ID of ${movieId}.`);
+          throw new Error(`Failed to downvote. No movie found with an ID of ${movieId}.`)
         }
-        return response.json();
+        return response.json()
       })
       .then((updatedMovie) => {
         setMovies((prevMovies) =>
           prevMovies.map((movie) =>
             movie.id === updatedMovie.id ? { ...movie, vote_count: updatedMovie.vote_count } : movie
           )
-        );
+        )
       })
-      .catch((error) => console.error(error.message));
+      .catch((error) => console.error(error.message))
   }
 
   return (
@@ -81,7 +81,7 @@ function App() {
           <Route
           path="*"
           element={
-            <div className="not-found">
+            <div className="error">
               <h2>404 - Page Not Found</h2>
               <p>Sorry, the page you're looking for does not exist.</p>
               <a href="/" className="home-link">Go back to the homepage</a>
@@ -90,7 +90,7 @@ function App() {
         />
         </Routes>
     </main>
-  );
+  )
 }
 
-export default App;
+export default App
