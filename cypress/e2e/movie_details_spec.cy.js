@@ -16,6 +16,7 @@ describe('Movie Details spec', () => {
 
     cy.get('.MoviePoster').should('have.length', 4)
     cy.get('.MoviePoster').first().click()
+    cy.visit('http://localhost:3000/movies/155')
     cy.get('h1').should('contain', 'rancid tomatillos')
     cy.get('.home-button').should('exist').within(() => {
       cy.get('img').should('exist')
