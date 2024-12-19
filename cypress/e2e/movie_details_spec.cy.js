@@ -11,7 +11,7 @@ describe('Movie Details spec', () => {
 
     cy.intercept('GET', 'https://rancid-tomatillos-api.onrender.com/api/v1/movies/155', {
       statusCode: 200,
-      fixture: 'movies/155'
+      fixture: 'movie_details'
     })
 
     cy.get('.MoviePoster').should('have.length', 4)
@@ -33,6 +33,22 @@ describe('Movie Details spec', () => {
     })
 
     cy.get('.home-button').click()
+    cy.url().should('include', '/')
+  })
+
+  it('displays an error if no movie found or bad URL', () => {
+    cy.intercept('GET', 'https://rancid-tomatillos-api.onrender.com/api/v1/movies', {
+      statusCode: 200,
+      fixture: 'movie_posters'
+    })
+
+    cy.visit('http://localhost:3000/;lkjghjhg')
+
+    cy.get('h1').should('contain', 'rancid tomatillos')
+    cy.get('h2').should('contain', '404 - Page Not Found')
+    cy.get('p').should('contain', 'Sorry, the page')
+    cy.get('.home-link').should('contain', 'Go back to the homepage')
+    cy.get('.home-link').click()
     cy.url().should('include', '/')
   })
 })
